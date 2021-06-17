@@ -19,7 +19,7 @@
 Servo servo_motor; 
 
 // Construct an Ultrasonic Sensor Object
-NewPing sonar(trig_pin, echo_pin, maximum_distance); 
+NewPing Sonar(trig_pin, echo_pin, maximum_distance); 
 
 bool goesForward = false;
 
@@ -43,7 +43,7 @@ void setup() {
     delay(2000);
 
     // Find the distance of the nearest obstacle    
-    distance = readPing();
+    distance = read_distance();
     delay(100);
 }
 
@@ -55,7 +55,7 @@ void loop() {
     delay(50);
 
     // Find the distance to the nearest obstacle
-    distance = readPing();
+    distance = read_distance();
 
     // Check if the distance is less than 20cm
     if (distance <= 20){
@@ -110,7 +110,7 @@ int lookRight(){
     delay(500);
 
     // Read the distance
-    int distance = readPing();
+    int distance = read_distance();
     delay(100);
 
     // Turn the Servo to the Centre
@@ -129,7 +129,7 @@ int lookLeft(){
     delay(500);
 
     // Read the distance
-    int distance = readPing();
+    int distance = read_distance();
     delay(100);
 
     // Turn the Sevo to the Centre
@@ -140,17 +140,25 @@ int lookLeft(){
     return distance;
 }
 
+// A function that reads the distance of the 
+// nearest obstacle in cms and returns it
+int read_distance(){
+    // Read the distance in cms
+    int cm = Sonar.ping_cm();
 
-int readPing(){
-    delay(70);
-    int cm = sonar.ping_cm();
-    if (cm==0){9
-    cm=250;
+    // Check if value is 0 (no detected obstacle)
+    if (cm==0){
+        // Assume distance is 250 cms
+        cm=250;
     }
+
+    // Return the distance
     return cm;
 }
 
+// A function that stops the rover movement
 void moveStop(){
+    // Stop all Motors
     digitalWrite(RightMotorForward, LOW);
     digitalWrite(LeftMotorForward, LOW);
     digitalWrite(RightMotorBackward, LOW);
