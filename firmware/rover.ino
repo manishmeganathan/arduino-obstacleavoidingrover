@@ -165,61 +165,62 @@ void moveStop(){
     digitalWrite(LeftMotorBackward, LOW);
 }
 
+// A function that moves the rover forward
 void moveForward(){
-
+    // Check the global direction
     if(!goesForward){
-
+        // Set the global direction
         goesForward=true;
 
+        // Set the forward motors to HIGH
         digitalWrite(LeftMotorForward, HIGH);
         digitalWrite(RightMotorForward, HIGH);
-
+        // Set the backward motors to LOW
         digitalWrite(LeftMotorBackward, LOW);
         digitalWrite(RightMotorBackward, LOW); 
     }
 }
 
+// A function that moves the rover backward
 void moveBackward(){
-
+    // Set the global direction
     goesForward=false;
 
+    // Set the backward motors to HIGH
     digitalWrite(LeftMotorBackward, HIGH);
     digitalWrite(RightMotorBackward, HIGH);
-
+    // Set the forward motors to LOW
     digitalWrite(LeftMotorForward, LOW);
     digitalWrite(RightMotorForward, LOW);
-
 }
 
-void turnRight(){
 
+void turnRight(){
+    // Set the left motor to move forward and the right to move
+    // backward, causing the rover to turn right in the same place
     digitalWrite(LeftMotorForward, HIGH);
     digitalWrite(RightMotorBackward, HIGH);
-
     digitalWrite(LeftMotorBackward, LOW);
     digitalWrite(RightMotorForward, LOW);
 
+    // Delay for half a second
     delay(500);
 
-    digitalWrite(LeftMotorForward, HIGH);
-    digitalWrite(RightMotorForward, HIGH);
-
-    digitalWrite(LeftMotorBackward, LOW);
-    digitalWrite(RightMotorBackward, LOW);
+    // Move the rover forward
+    moveForward();
 }
 
 void turnLeft(){
+    // Set the left motor to move backward and the right to move
+    // forward, causing the rover to turn left in the same place
     digitalWrite(LeftMotorBackward, HIGH);
     digitalWrite(RightMotorForward, HIGH);
-
     digitalWrite(LeftMotorForward, LOW);
     digitalWrite(RightMotorBackward, LOW);
 
+    // Delay for half a second
     delay(500);
 
-    digitalWrite(LeftMotorForward, HIGH);
-    digitalWrite(RightMotorForward, HIGH);
-
-    digitalWrite(LeftMotorBackward, LOW);
-    digitalWrite(RightMotorBackward, LOW);
+    // Move the rover forward
+    moveForward();
 }
