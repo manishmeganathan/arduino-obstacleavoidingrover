@@ -151,72 +151,67 @@ int readPing(){
 }
 
 void moveStop(){
-
-digitalWrite(RightMotorForward, LOW);
-digitalWrite(LeftMotorForward, LOW);
-digitalWrite(RightMotorBackward, LOW);
-digitalWrite(LeftMotorBackward, LOW);
+    digitalWrite(RightMotorForward, LOW);
+    digitalWrite(LeftMotorForward, LOW);
+    digitalWrite(RightMotorBackward, LOW);
+    digitalWrite(LeftMotorBackward, LOW);
 }
 
 void moveForward(){
 
-if(!goesForward){
+    if(!goesForward){
 
-goesForward=true;
+        goesForward=true;
 
-digitalWrite(LeftMotorForward, HIGH);
-digitalWrite(RightMotorForward, HIGH);
+        digitalWrite(LeftMotorForward, HIGH);
+        digitalWrite(RightMotorForward, HIGH);
 
-digitalWrite(LeftMotorBackward, LOW);
-digitalWrite(RightMotorBackward, LOW); 
-}
+        digitalWrite(LeftMotorBackward, LOW);
+        digitalWrite(RightMotorBackward, LOW); 
+    }
 }
 
 void moveBackward(){
 
-goesForward=false;
+    goesForward=false;
 
-digitalWrite(LeftMotorBackward, HIGH);
-digitalWrite(RightMotorBackward, HIGH);
+    digitalWrite(LeftMotorBackward, HIGH);
+    digitalWrite(RightMotorBackward, HIGH);
 
-digitalWrite(LeftMotorForward, LOW);
-digitalWrite(RightMotorForward, LOW);
+    digitalWrite(LeftMotorForward, LOW);
+    digitalWrite(RightMotorForward, LOW);
 
 }
 
 void turnRight(){
 
-digitalWrite(LeftMotorForward, HIGH);
-digitalWrite(RightMotorBackward, HIGH);
+    digitalWrite(LeftMotorForward, HIGH);
+    digitalWrite(RightMotorBackward, HIGH);
 
-digitalWrite(LeftMotorBackward, LOW);
-digitalWrite(RightMotorForward, LOW);
+    digitalWrite(LeftMotorBackward, LOW);
+    digitalWrite(RightMotorForward, LOW);
 
-delay(500);
+    delay(500);
 
-digitalWrite(LeftMotorForward, HIGH);
-digitalWrite(RightMotorForward, HIGH);
+    digitalWrite(LeftMotorForward, HIGH);
+    digitalWrite(RightMotorForward, HIGH);
 
-digitalWrite(LeftMotorBackward, LOW);
-digitalWrite(RightMotorBackward, LOW);
-
-
-
+    digitalWrite(LeftMotorBackward, LOW);
+    digitalWrite(RightMotorBackward, LOW);
 }
 
 void turnLeft(){
+    digitalWrite(LeftMotorBackward, HIGH);
+    digitalWrite(RightMotorForward, HIGH);
 
-digitalWrite(LeftMotorBackward, HIGH);
-digitalWrite(RightMotorForward, HIGH);
+    digitalWrite(LeftMotorForward, LOW);
+    digitalWrite(RightMotorBackward, LOW);
 
-digitalWrite(LeftMotorForward, LOW);
-digitalWrite(RightMotorBackward, LOW);
+    delay(500);
 
-delay(500);
+    digitalWrite(LeftMotorForward, HIGH);
+    digitalWrite(RightMotorForward, HIGH);
 
-digitalWrite(LeftMotorForward, HIGH);
-digitalWrite(RightMotorForward, HIGH);
-
-digitalWrite(LeftMotorBackward, LOW);
-digitalWrite(RightMotorBackward, LOW);
+    digitalWrite(LeftMotorBackward, LOW);
+    digitalWrite(RightMotorBackward, LOW);
 }
